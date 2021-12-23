@@ -14,5 +14,5 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-magic_%: skullfet-%.mag
+magic_%: skullfet_%.mag
 	magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc $<
