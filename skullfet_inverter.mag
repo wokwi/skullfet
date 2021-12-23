@@ -1,8 +1,10 @@
 magic
 tech sky130A
-timestamp 1639732223
+timestamp 1640301285
 << nwell >>
 rect 81 -1404 594 -837
+<< pwell >>
+rect 78 -590 597 -72
 << nmos >>
 rect 135 -284 540 -244
 << pmos >>
@@ -154,9 +156,15 @@ rect 150 -1290 160 -1260
 rect 20 -1300 160 -1290
 << labels >>
 flabel metal1 s 20 -210 70 -160 0 FreeSans 240 90 0 0 VGND
+port 1 nsew ground bidirectional abutment
 flabel metal1 s 20 -1300 70 -1250 0 FreeSans 240 90 0 0 VPWR
+port 2 nsew power bidirectional abutment
 flabel locali s 20 -760 70 -680 0 FreeSans 340 0 0 0 Y
+port 3 s signal output
 flabel locali s 620 -760 670 -680 0 FreeSans 340 0 0 0 A
+port 4 e signal input
 flabel nwell s 80 -1300 130 -1250 0 FreeSans 240 90 0 0 VPB
+port 5 nsew power bidirectional
 flabel pwell s 80 -210 130 -160 0 FreeSans 240 90 0 0 VNB
+port 6 nsew ground bidirectional
 << end >>
