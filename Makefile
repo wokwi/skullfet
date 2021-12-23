@@ -14,5 +14,22 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+TARGETS = gds/skullfet_inverter.gds gds/skullfet_inverter.lef gds/skullfet_nand.gds gds/skullfet_nand.lef
+
+all: gds $(TARGETS)
+clean: 
+	rm -f $(TARGETS)
+
+.PHONY: all clean
+
 magic_%: skullfet_%.mag
 	magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc $<
+
+gds:
+	mkdir gds
+
+gds/skullfet_%.gds: skullfet_%.mag
+	echo "gds write \"$@\"" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+
+gds/skullfet_%.lef: skullfet_%.mag
+	echo "lef write \"$@\"" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
