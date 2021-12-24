@@ -1,10 +1,11 @@
 magic
 tech sky130A
-timestamp 1640301285
+timestamp 1640343659
 << nwell >>
 rect 81 -1404 594 -837
 << pwell >>
-rect 78 -590 597 -72
+rect 80 -160 595 -75
+rect 78 -590 595 -160
 << nmos >>
 rect 135 -284 540 -244
 << pmos >>
@@ -77,6 +78,20 @@ rect 140 -340 160 -310
 << pdiffc >>
 rect 140 -1150 170 -1120
 rect 170 -1290 190 -1260
+<< psubdiff >>
+rect 100 -90 180 -85
+rect 100 -130 115 -90
+rect 165 -130 180 -90
+rect 100 -135 180 -130
+<< nsubdiff >>
+rect 105 -1330 175 -1325
+rect 105 -1365 120 -1330
+rect 160 -1365 175 -1330
+rect 105 -1370 175 -1365
+<< psubdiffcont >>
+rect 115 -130 165 -90
+<< nsubdiffcont >>
+rect 120 -1365 160 -1330
 << poly >>
 rect 20 -284 135 -244
 rect 540 -284 670 -244
@@ -93,6 +108,10 @@ rect 540 -1210 670 -1170
 rect 630 -540 660 -490
 rect 630 -980 660 -930
 << locali >>
+rect 100 -90 180 -85
+rect 100 -130 115 -90
+rect 165 -130 180 -90
+rect 100 -160 180 -130
 rect 80 -170 200 -160
 rect 80 -200 90 -170
 rect 120 -200 170 -170
@@ -119,6 +138,10 @@ rect 110 -1290 120 -1260
 rect 150 -1290 170 -1260
 rect 190 -1290 200 -1260
 rect 110 -1300 200 -1290
+rect 105 -1330 175 -1300
+rect 105 -1365 120 -1330
+rect 160 -1365 175 -1330
+rect 105 -1370 175 -1365
 << viali >>
 rect 90 -200 120 -170
 rect 120 -1290 150 -1260
@@ -163,8 +186,8 @@ flabel locali s 20 -760 70 -680 0 FreeSans 340 0 0 0 Y
 port 3 s signal output
 flabel locali s 620 -760 670 -680 0 FreeSans 340 0 0 0 A
 port 4 e signal input
-flabel nwell s 80 -1300 130 -1250 0 FreeSans 240 90 0 0 VPB
+flabel metal1 s 80 -1300 130 -1250 0 FreeSans 240 90 0 0 VPB
 port 5 nsew power bidirectional
-flabel pwell s 80 -210 130 -160 0 FreeSans 240 90 0 0 VNB
+flabel metal1 s 80 -210 130 -160 0 FreeSans 240 90 0 0 VNB
 port 6 nsew ground bidirectional
 << end >>
