@@ -4,6 +4,7 @@
 
 ## List of cells
 
-- [Inverter](skullfet-inverter.mag)
+- [Inverter](skullfet_inverter.mag)
+- [NAND](skullfet_nand.mag)
 
 Copyright (C) 2021 Uri Shaked
