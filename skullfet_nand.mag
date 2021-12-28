@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1640712078
+timestamp 1640712674
 << nwell >>
 rect 1242 -1728 2295 -972
 rect 189 -1944 2295 -1728
@@ -276,7 +276,11 @@ rect 1377 -2484 1998 -2403
 rect 2106 -2484 2187 -2403
 rect 1377 -2592 1404 -2484
 rect 1485 -2592 2187 -2484
+rect -756 -2781 -648 -2619
 rect 1377 -2646 2187 -2592
+rect -945 -2862 1998 -2781
+rect 2079 -2916 2187 -2646
+rect -945 -2997 2187 -2916
 << labels >>
 flabel locali s 1566 -594 1755 -486 0 FreeSans 240 0 0 0 A
 flabel locali s -405 -2430 -216 -2322 0 FreeSans 240 0 0 0 B
