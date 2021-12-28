@@ -283,9 +283,17 @@ rect 2079 -2916 2187 -2646
 rect -945 -2997 2187 -2916
 << labels >>
 flabel locali s 1566 -594 1755 -486 0 FreeSans 240 0 0 0 A
+port 1 nsew signal input
 flabel locali s -405 -2430 -216 -2322 0 FreeSans 240 0 0 0 B
+port 2 nsew signal input
 flabel locali s 1431 -837 1620 -729 0 FreeSans 240 0 0 0 Y
+port 3 nsew signal output
 flabel metal1 s 1701 -2592 1890 -2484 0 FreeSans 240 0 0 0 VPWR
-flabel nwell s 945 -2727 1134 -2619 0 FreeSans 240 0 0 0 VPB
-flabel metal1 s -594 -2592 -405 -2484 0 FreeSans 240 0 0 0 VGND
+port 4 nsew power bidirectional
+flabel metal1 s -756 -2781 -648 -2619 0 FreeSans 240 0 0 0 VGND
+port 5 nsew ground bidirectional
+flabel locali s 1242 -2592 1350 -2484 0 FreeSans 240 0 0 0 VPB
+port 6 nsew power bidirectional
+flabel locali s -756 -2187 -648 -2079 0 FreeSans 240 0 0 0 VNB
+port 7 nsew ground bidirectional
 << end >>
