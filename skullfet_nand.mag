@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1640713472
+timestamp 1640767452
 << nwell >>
 rect 2187 1269 3240 2025
 rect 1134 1053 3240 1269
@@ -466,6 +466,10 @@ rect 1215 513 2025 729
 rect 1269 405 1971 513
 rect 1377 351 1863 405
 rect 1431 297 1863 351
+<< fillblock >>
+rect 1134 2052 2106 2862
+rect 0 1080 3240 2052
+rect 1134 216 2106 1080
 << labels >>
 flabel locali s 2511 2403 2700 2511 0 FreeSans 240 0 0 0 A
 port 1 nsew signal input
