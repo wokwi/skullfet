@@ -481,8 +481,4 @@ flabel metal1 s 2646 405 2835 513 0 FreeSans 240 0 0 0 VPWR
 port 4 nsew power bidirectional
 flabel metal1 s 189 216 297 378 0 FreeSans 240 0 0 0 VGND
 port 5 nsew ground bidirectional
-flabel locali s 2187 405 2295 513 0 FreeSans 240 0 0 0 VPB
-port 6 nsew power bidirectional
-flabel locali s 189 810 297 918 0 FreeSans 240 0 0 0 VNB
-port 7 nsew ground bidirectional
 << end >>

@@ -239,8 +239,4 @@ flabel locali s 250 705 300 785 0 FreeSans 340 0 0 0 Y
 port 3 s signal output
 flabel locali s 850 705 900 785 0 FreeSans 340 0 0 0 A
 port 4 e signal input
-flabel metal1 s 310 165 360 205 0 FreeSans 240 90 0 0 VPB
-port 5 nsew power bidirectional
-flabel metal1 s 310 1260 350 1305 0 FreeSans 240 90 0 0 VNB
-port 6 nsew ground bidirectional
 << end >>
