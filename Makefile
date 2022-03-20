@@ -14,7 +14,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-TARGETS = gds/skullfet_inverter.gds gds/skullfet_inverter.lef gds/skullfet_nand.gds gds/skullfet_nand.lef
+TARGETS = gds/skullfet_inverter.gds gds/skullfet_inverter.lef gds/skullfet_inverter_10x.gds gds/skullfet_inverter_10x.lef gds/skullfet_nand.gds gds/skullfet_nand.lef
 
 all: gds $(TARGETS)
 clean: 
