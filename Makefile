@@ -23,13 +23,16 @@ clean:
 .PHONY: all clean
 
 magic_%: skullfet_%.mag
-	magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc $<
+	magic -rcfile $(PDK_ROOT)/gf180mcuC/libs.tech/magic/gf180mcuC.magicrc $<
 
 gds:
 	mkdir gds
 
 gds/skullfet_%.gds: skullfet_%.mag
-	echo "gds write \"$@\"" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+	echo "gds write \"$@\"" | magic -rcfile $(PDK_ROOT)/gf180mcuC/libs.tech/magic/gf180mcuC.magicrc -noconsole -dnull $<
 
 gds/skullfet_%.lef: skullfet_%.mag
-	echo "lef write \"$@\"" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+	echo "lef write \"$@\"" | magic -rcfile $(PDK_ROOT)/gf180mcuC/libs.tech/magic/gf180mcuC.magicrc -noconsole -dnull $<
+
+extract:
+	echo "extract\next2spice lvs\next2spice cthresh 0\next2spice" | magic -rcfile $(PDK_ROOT)/gf180mcuC/libs.tech/magic/gf180mcuC.magicrc -noconsole -dnull skullfet_inverter.mag
