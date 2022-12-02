@@ -1,6 +1,6 @@
 magic
 tech gf180mcuC
-timestamp 1669746995
+timestamp 1670013581
 << nwell >>
 rect 305 60 825 630
 << pwell >>
@@ -107,7 +107,10 @@ rect 770 255 900 295
 rect 860 925 890 975
 rect 860 485 890 535
 << metal1 >>
-rect 0 1400 1070 1440
+rect 0 1430 1070 1440
+rect 0 1410 10 1430
+rect 30 1410 1070 1430
+rect 0 1400 1070 1410
 rect 250 1240 290 1400
 rect 330 1375 410 1380
 rect 330 1335 345 1375
@@ -146,8 +149,18 @@ rect 335 135 405 165
 rect 335 100 350 135
 rect 390 100 405 135
 rect 335 95 405 100
-rect 0 0 1070 40
+rect 0 30 1070 40
+rect 0 10 10 30
+rect 30 10 1070 30
+rect 0 0 1070 10
+<< via1 >>
+rect 10 1410 30 1430
+rect 10 10 30 30
 << metal2 >>
+rect 0 1430 40 1440
+rect 0 1410 10 1430
+rect 30 1410 40 1430
+rect 0 1400 40 1410
 rect 473 1330 689 1357
 rect 446 1303 689 1330
 rect 392 1249 743 1303
@@ -217,12 +230,42 @@ rect 365 223 770 331
 rect 392 169 743 223
 rect 446 142 689 169
 rect 473 115 689 142
+rect 0 30 40 40
+rect 0 10 10 30
+rect 30 10 40 30
+rect 0 0 40 10
+<< via2 >>
+rect 10 1410 30 1430
+rect 10 10 30 30
+<< metal3 >>
+rect 0 1430 40 1440
+rect 0 1410 10 1430
+rect 30 1410 40 1430
+rect 0 1400 40 1410
+rect 0 30 40 40
+rect 0 10 10 30
+rect 30 10 40 30
+rect 0 0 40 10
+<< via3 >>
+rect 10 1410 30 1430
+rect 10 10 30 30
+<< metal4 >>
+rect -80 40 -40 1440
+rect 0 1430 1140 1440
+rect 0 1410 10 1430
+rect 30 1410 1140 1430
+rect 0 1400 1140 1410
+rect -80 30 1070 40
+rect -80 10 10 30
+rect 30 10 1070 30
+rect -80 0 1070 10
+rect 1100 0 1140 1400
 << fillblock >>
 rect 260 80 880 1390
 << labels >>
-flabel metal1 s 250 1260 290 1305 0 FreeSans 240 90 0 0 VSS
+flabel metal1 s 250 1260 290 1305 0 FreeSans 240 90 0 0 vss
 port 1 nsew ground bidirectional abutment
-flabel metal1 s 250 165 300 205 0 FreeSans 240 90 0 0 VDD
+flabel metal1 s 250 165 300 205 0 FreeSans 240 90 0 0 vdd
 port 2 nsew power bidirectional abutment
 flabel metal1 s 250 705 300 785 0 FreeSans 340 0 0 0 Y
 port 3 s signal output
