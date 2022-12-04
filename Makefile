@@ -29,7 +29,8 @@ gds:
 	mkdir gds
 
 gds/skullfet_%.gds: skullfet_%.mag
-	echo "gds write \"$@\"" | magic -rcfile $(PDK_ROOT)/gf180mcuC/libs.tech/magic/gf180mcuC.magicrc -noconsole -dnull $<
+	echo "gds write \"$@__magic\"" | magic -rcfile $(PDK_ROOT)/gf180mcuC/libs.tech/magic/gf180mcuC.magicrc -noconsole -dnull $<
+	klayout -b -r skullfet_gf180.py -rd "infile=$@__magic" -rd "outfile=$@"
 
 gds/skullfet_%.lef: skullfet_%.mag
 	echo "lef write \"$@\"" | magic -rcfile $(PDK_ROOT)/gf180mcuC/libs.tech/magic/gf180mcuC.magicrc -noconsole -dnull $<
