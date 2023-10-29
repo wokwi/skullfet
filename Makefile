@@ -15,10 +15,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 TARGETS = gds/skullfet_inverter.gds gds/skullfet_inverter.lef gds/skullfet_inverter_10x.gds gds/skullfet_inverter_10x.lef gds/skullfet_nand.gds gds/skullfet_nand.lef
+SPICE_FILES = skullfet_inverter.spice skullfet_nand.spice
 
 all: gds $(TARGETS)
 clean: 
-	rm -f $(TARGETS)
+	rm -f $(TARGETS) $(SPICE_FILES)
 
 .PHONY: all clean
 
@@ -33,3 +34,10 @@ gds/skullfet_%.gds: skullfet_%.mag
 
 gds/skullfet_%.lef: skullfet_%.mag
 	echo "lef write \"$@\" -pinonly" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+
+skullfet_%.spice: skullfet_%.mag
+	echo "extract\next2spice lvs\next2spice cthresh 0\next2spice" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+
+spice: $(SPICE_FILES)
+.PHONY: spice
+
