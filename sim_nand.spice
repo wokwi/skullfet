@@ -1,0 +1,26 @@
+* SkullFET NAND Spice Simulation
+* Run with `make sim_nand`
+
+.include "pdk_lib.spice"
+
+Vdd vdd 0 DC 1.8  ; power supply: 1.8V
+Vss vss 0 0       ; ground
+
+* Input pulse signals
+VinA A 0 PWL (0u 0 29u 0 30u 1.8 59u 1.8 60u 1.8 99u 1.8 100u 0  )
+VinB B 0 PWL (0u 0 29u 0 30u 0   59u 0   60u 1.8 99u 1.8 100u 1.8)
+
+* Include the SkullFET NAND model
+.include "skullfet_nand.spice"
+
+X1 A B Y vdd vss skullfet_nand
+
+* Simulation parameters:
+.tran 500n 120u
+
+.control
+run
+plot A + 3, B + 6, Y
+.endc
+
+.end

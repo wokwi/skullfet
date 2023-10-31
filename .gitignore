@@ -2,4 +2,8 @@ __pycache__
 gds/*.gds
 gds/*.lef
 skullfet_*.ext
+skullfet_*.nodes
+skullfet_*.sim
 skullfet_*.spice
+pdk_lib.spice
+bsim4v5.out

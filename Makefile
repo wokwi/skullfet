@@ -16,10 +16,11 @@
 
 TARGETS = gds/skullfet_inverter.gds gds/skullfet_inverter.lef gds/skullfet_inverter_10x.gds gds/skullfet_inverter_10x.lef gds/skullfet_nand.gds gds/skullfet_nand.lef
 SPICE_FILES = skullfet_inverter.spice skullfet_nand.spice
+SPICE_INTERMEDIATE = $(SPICE_FILES:.spice=.sim) $(SPICE_FILES:.spice=.nodes) $(SPICE_FILES:.spice=.ext) $(SPICE_FILES:.spice=.res.ext)
 
 all: gds $(TARGETS)
 clean: 
-	rm -f $(TARGETS) $(SPICE_FILES)
+	rm -f $(TARGETS) $(SPICE_FILES) $(SPICE_INTERMEDIATE)
 
 .PHONY: all clean
 
@@ -36,8 +37,12 @@ gds/skullfet_%.lef: skullfet_%.mag
 	echo "lef write \"$@\" -pinonly" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
 
 skullfet_%.spice: skullfet_%.mag
-	echo "extract\next2spice lvs\next2spice cthresh 0\next2spice" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+	cat scripts/extract.tcl | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
 
 spice: $(SPICE_FILES)
 .PHONY: spice
 
+sim_nand: skullfet_nand.spice
+	echo ".lib '$(PDK_ROOT)/sky130A/libs.tech/ngspice/sky130.lib.spice' tt" > pdk_lib.spice
+	ngspice sim_nand.spice
+.PHONY: sim_nand
