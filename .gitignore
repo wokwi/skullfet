@@ -1,6 +1,7 @@
 __pycache__
 gds/*.gds
 gds/*.lef
+.venv
 skullfet_*.ext
 skullfet_*.nodes
 skullfet_*.sim

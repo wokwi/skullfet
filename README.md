@@ -1,6 +1,6 @@
 # SkullFET
 
-> Skull shaped MOSFET cells for SkyWater 130 nm CMOS process
+> Skull shaped MOSFET cells for SKY130 and IHP SG13G2 130 nm processes
 
 ## List of cells
 
@@ -18,4 +18,26 @@ You need to SkyWater's SKY130 PDK installed in order to build the cells. Set the
 
 ![NAND simulation](images/ngspice-skullfet-nand.png)
 
-Copyright (C) 2021-2023 Uri Shaked
+## GDS Generation
+
+This project now supports direct GDS generation using the `gdstk` library:
+
+1. Install dependencies:
+
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. Generate the Inverter GDS file:
+
+   ```
+   python scripts/skullfet_gds.py
+   ```
+
+   To generate the NAND cell, use:
+
+   ```
+   python scripts/skullfet_gds.py -t nand
+   ```
+
+Copyright (C) 2021-2025 Uri Shaked
