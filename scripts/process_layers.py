@@ -15,6 +15,7 @@ PROCESS_LAYERS = {
         "diff": {"layer": 65, "datatype": 20},
         "poly": {"layer": 66, "datatype": 20},
         "psd": {"layer": 94, "datatype": 20},
+        "licon": {"layer": 67, "datatype": 20},
         "metal1": {"layer": 68, "datatype": 20},
         "metal2": {"layer": 69, "datatype": 20},
         "nwell": {"layer": 64, "datatype": 20},
@@ -24,8 +25,9 @@ PROCESS_LAYERS = {
         "diff": {"layer": 1, "datatype": 0},  # Active.drawing
         "poly": {"layer": 5, "datatype": 0},  # GatePoly.drawing
         "psd": {"layer": 14, "datatype": 0},  # pSD.drawing
-        "metal1": {"layer": 8, "datatype": 0},  # Metal1.drawing
-        "metal2": {"layer": 10, "datatype": 0},  # Metal2.drawing
+        "licon": {"layer": 8, "datatype": 0},  # Metal1.drawing
+        "metal1": {"layer": 10, "datatype": 0},  # Metal2.drawing
+        "metal2": {"layer": 30, "datatype": 0},  # Metal3.drawing
         "nwell": {"layer": 31, "datatype": 0},  # NWell.drawing
     },
 }
