@@ -16,6 +16,7 @@
 
 TARGETS = gds/skullfet_inverter.gds gds/skullfet_inverter.lef gds/skullfet_inverter_10x.gds gds/skullfet_inverter_10x.lef gds/skullfet_nand.gds gds/skullfet_nand.lef gds/skullfet_logo.gds gds/skullfet_logo.lef
 SPICE_FILES = skullfet_inverter.spice skullfet_nand.spice
+MAGIC_RC = "$(PDK_ROOT)/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.magicrc"
 SPICE_INTERMEDIATE = $(SPICE_FILES:.spice=.sim) $(SPICE_FILES:.spice=.nodes) $(SPICE_FILES:.spice=.ext) $(SPICE_FILES:.spice=.res.ext)
 
 all: gds $(TARGETS)
@@ -25,19 +26,19 @@ clean:
 .PHONY: all clean
 
 magic_%: skullfet_%.mag
-	magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc $<
+	magic -rcfile $(MAGIC_RC) $<
 
 gds:
 	mkdir gds
 
 gds/skullfet_%.gds: skullfet_%.mag
-	echo "gds write \"$@\"" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+	echo "gds write \"$@\"" | magic -rcfile $(MAGIC_RC) -noconsole -dnull $<
 
 gds/skullfet_%.lef: skullfet_%.mag
-	echo "lef write \"$@\" -pinonly" | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+	echo "lef write \"$@\" -pinonly" | magic -rcfile $(MAGIC_RC) -noconsole -dnull $<
 
 skullfet_%.spice: skullfet_%.mag
-	cat scripts/extract.tcl | magic -rcfile $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc -noconsole -dnull $<
+	cat scripts/extract.tcl | magic -rcfile $(MAGIC_RC) -noconsole -dnull $<
 
 spice: $(SPICE_FILES)
 .PHONY: spice
