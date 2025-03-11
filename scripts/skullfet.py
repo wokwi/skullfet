@@ -75,73 +75,63 @@ def create_polygon_from_rect(rect, matrix=unit, layer=None):
     return polygon
 
 
+def skullfet_polygons(process, transform, pmos=False):
+    """Create polygons for the skulls"""
+    result = []
+    nwell_padding = 1
+
+    layers = get_process_layers(process)
+
+    for layer in ["diff", "metal1", "metal2"]:
+        for rect in skull:
+            result.append(create_polygon_from_rect(rect, transform, layers[layer]))
+
+    # Nwell around the skulls
+    if pmos:
+        for rect in bounds(skull, pad=nwell_padding):
+            result.append(create_polygon_from_rect(rect, transform, layers["nwell"]))
+
+    return result
+
+
 def create_cell_with_layers(name, process="sg13g2", draw_4_mosfets=False):
     """Create a GDSII cell with the skull and bones on different layers"""
     cell = gdstk.Cell(name)
 
-    # Get layer definitions for the selected process
+    scale_factor = 0.25
+    transform = scale(scale_factor)
     layers = get_process_layers(process)
 
-    scale_factor = 0.25
-    nwell_padding = 1 if draw_4_mosfets else 2
-
     # Draw the skulls
-    for layer in ["diff", "metal1", "metal2"]:
-        for rect in skull:
-            cell.add(
-                create_polygon_from_rect(
-                    rect, scale(scale_factor).dot(vflip), layers[layer]
-                )
+    cell.add(*skullfet_polygons(process, transform, pmos=True))
+    cell.add(
+        *skullfet_polygons(
+            process,
+            transform.dot(vflip).dot(translate(0, -54)),
+        )
+    )
+
+    if draw_4_mosfets:
+        cell.add(
+            *skullfet_polygons(
+                process,
+                transform.dot(translate(-20, 15)).dot(rotate90),
             )
-
-            cell.add(
-                create_polygon_from_rect(
-                    rect, scale(scale_factor).dot(translate(0, -54)), layers[layer]
-                )
+        )
+        cell.add(
+            *skullfet_polygons(
+                process,
+                transform.dot(translate(45, 40)).dot(rotate270),
+                pmos=True,
             )
-
-            # Extra two skulls for 4-MOSFET cells
-            if draw_4_mosfets:
-                cell.add(
-                    create_polygon_from_rect(
-                        rect,
-                        scale(scale_factor).dot(translate(-20, -39)).dot(rotate90),
-                        layers[layer],
-                    )
-                )
-
-                cell.add(
-                    create_polygon_from_rect(
-                        rect,
-                        scale(scale_factor).dot(translate(45, -14)).dot(rotate270),
-                        layers[layer],
-                    )
-                )
+        )
 
     # Draw the bones on the metal layers
     for layer in ["metal1", "metal2"]:
         for rect in bones:
             cell.add(
                 create_polygon_from_rect(
-                    rect, scale(scale_factor).dot(translate(0, -34)), layers[layer]
-                )
-            )
-
-    # Nwell around the skulls
-    for rect in bounds(skull, pad=nwell_padding):
-        cell.add(
-            create_polygon_from_rect(
-                rect, scale(scale_factor).dot(translate(0, -54)), layers["nwell"]
-            )
-        )
-
-    if draw_4_mosfets:
-        for rect in bounds(skull, pad=nwell_padding):
-            cell.add(
-                create_polygon_from_rect(
-                    rect,
-                    scale(scale_factor).dot(translate(45, -14)).dot(rotate270),
-                    layers["nwell"],
+                    rect, transform.dot(translate(0, 20)), layers[layer]
                 )
             )
 
