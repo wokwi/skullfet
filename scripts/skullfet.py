@@ -78,7 +78,8 @@ def create_polygon_from_rect(rect, matrix=unit, layer=None):
 def skullfet_polygons(process, transform, pmos=False):
     """Create polygons for the skulls"""
     result = []
-    nwell_padding = 1
+    nwell_padding = 1.5
+    psd_padding = 1.2
 
     layers = get_process_layers(process)
 
@@ -86,8 +87,13 @@ def skullfet_polygons(process, transform, pmos=False):
         for rect in skull:
             result.append(create_polygon_from_rect(rect, transform, layers[layer]))
 
-    # Nwell around the skulls
+    # Poly
+    result.append(create_polygon_from_rect([1, 9.5, 24, 10.5], transform, layers["poly"]))
+
+    # Nwell / PSD around the skulls
     if pmos:
+        for rect in bounds(skull, pad=psd_padding):
+            result.append(create_polygon_from_rect(rect, transform, layers["psd"]))
         for rect in bounds(skull, pad=nwell_padding):
             result.append(create_polygon_from_rect(rect, transform, layers["nwell"]))
 
